@@ -1,0 +1,449 @@
+// import React, { Component } from "react";
+// import NewsItem from "./NewsItem";
+// import Spinner from "./Spinner";
+// import PropTypes from "prop-types";
+// // import CountryDropdown from "./CountryDropdown";
+// import InfiniteScroll from "react-infinite-scroll-component";
+// // import ScrollButtons from "./ScrollButtons";
+
+
+// export default class News extends Component {
+//   static propTypes = {
+//     country: PropTypes.string,
+//     pageSize: PropTypes.number,
+//     category: PropTypes.string,
+//   };
+//   static defaultProps = {
+//     country: "us",
+//     pageSize: 10,
+//     // category: "sports",
+//     // selectedCountry:"in"
+//   };
+
+//   articles = [
+//     {
+//       source: {
+//         id: "bbc-sport",
+//         name: "BBC Sport",
+//       },
+//       author: null,
+//       title:
+//         "EFL Cup: Nine games including Newcastle v Man City & Chelsea v Brighton",
+//       description:
+//         "Follow 5 Live commentary, score & text updates from round three of the Carabao Cup as Newcastle host Man City plus eight other fixtures.",
+//       url: "http://www.bbc.co.uk/sport/live/football/65933150",
+//       urlToImage:
+//         "https:////m.files.bbci.co.uk/modules/bbc-morph-sport-seo-meta/1.23.3/images/bbc-sport-logo.png",
+//       publishedAt: "2023-09-27T17:52:21.9931705Z",
+//       content:
+//         "Last night seven teams booked their place in the Carabao Cup fourth round and tonight nine more will join them.\r\nThen we'll have the draw.\r\nAll right, let's start building up then.",
+//     },
+//     {
+//       source: {
+//         id: "polygon",
+//         name: "Polygon",
+//       },
+//       author: "Michael McWhertor",
+//       title: "PlayStation Plus October 2023 free games announced",
+//       description:
+//         "PS Plus subscribers will get The Callisto Protocol, Farming Simulator 22 and Weird West for PS4 and PS5 this October with their subscription.",
+//       url: "https://www.polygon.com/23890906/playstation-plus-october-2023-free-games-ps4-ps5-essential",
+//       urlToImage:
+//         "https://cdn.vox-cdn.com/thumbor/8DWJcNFQXQC2WFH6ZJoWhNmmxlw=/0x0:3840x2010/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/23604753/52118036106_4b3d2b637e_o.jpg",
+//       publishedAt: "2023-09-27T15:45:00Z",
+//       content:
+//         "PlayStation Plus subscribers free Essential games for October are The Callisto Protocol, Farming Simulator 22, and Weird West, Sony announced on Wednesday. Players can download the trio of PlayStatio… [+2049 chars]",
+//     },
+//     {
+//       source: {
+//         id: "polygon",
+//         name: "Polygon",
+//       },
+//       author: "Oli Welsh",
+//       title: "FIFA games removed from sale ahead of EA Sports FC 24 release",
+//       description:
+//         "Every FIFA game has been delisted from the Xbox and PlayStation stores, Steam, the Nintendo eShop, and other digital storefronts.",
+//       url: "https://www.polygon.com/23892309/fifa-ea-delisting",
+//       urlToImage:
+//         "https://cdn.vox-cdn.com/thumbor/oT6zuafSzk7DKPwf63hFo3jJKMY=/0x0:3840x2010/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/19914011/fifa_20_van_dijk_3840.jpg",
+//       publishedAt: "2023-09-27T15:25:00Z",
+//       content:
+//         "And just like that, it was gone. EA appears to have delisted every FIFA game from every digital game store including Steam, Xbox, and PlayStation just two days ahead of the launch of the first game i… [+1888 chars]",
+//     },
+//     {
+//       source: {
+//         id: "four-four-two",
+//         name: "FourFourTwo",
+//       },
+//       author: "Ben Hayward",
+//       title:
+//         "'One will have to go and it will be Ramsdale' – Carragher, Neville & Wright on Arsenal GKs",
+//       description:
+//         "The three Sky Sports pundits have discussed the 25-year-old keeper after he was left out of the last three games by Mikel Arteta",
+//       url: "https://www.fourfourtwo.com/news/one-will-have-to-go-and-it-will-be-ramsdale-carragher-neville-and-wright-on-arsenal-gks",
+//       urlToImage:
+//         "https://cdn.mos.cms.futurecdn.net/H96EZYMmt9ACNa5e2MTjr7-1200-80.jpg",
+//       publishedAt: "2023-09-27T13:34:12Z",
+//       content:
+//         "Arsenal goalkeeper Aaron Ramsdale might have to leave Arsenal after losing his place to David Raya in the last three games, Jamie Carragher and Gary Neville have said.\r\nRamsdale was surprisingly drop… [+3578 chars]",
+//     },
+//     {
+//       source: {
+//         id: "blasting-news-br",
+//         name: "Blasting News (BR)",
+//       },
+//       author: "Israel Martins",
+//       title:
+//         "A Devolver Digital decide não lançar seus jogos em serviços de assinatura no day one",
+//       description:
+//         "A empresa disse que está priorizando a qualidade e valorização dos seus games",
+//       url: "https://br.blastingnews.com/tecnologia/2023/09/a-devolver-digital-decide-nao-lancar-seus-jogos-em-servicos-de-assinatura-no-day-one-003750765.html",
+//       urlToImage:
+//         "https://staticr1.blastingcdn.com/media/photogallery/2023/9/26/os/b_1200x630x82/devolver-digital-reproducao-devolver-digital_2972913.jpg",
+//       publishedAt: "2023-09-27T00:32:49Z",
+//       content:
+//         "A Devolver Digital, uma renomada editora de jogos indie, tomou a decisão de recusar propostas de serviços de assinatura, visando preservar o valor e a qualidade de seus jogos.\r\nA empresa revelou que … [+2343 chars]",
+//     },
+//     {
+//       source: {
+//         id: "nhl-news",
+//         name: "NHL News",
+//       },
+//       author: "Dan Rosen",
+//       title:
+//         "NHL considering more unique destinations after Global Series -- Melbourne",
+//       description:
+//         "As the NHL continues its final preparations to bring teams to the Southern Hemisphere for the first time in September, it is already considering other unique international cities that could host preseason games in future seasons, NHL Deputy Commissioner Bill …",
+//       url: "https://www.nhl.com/news/nhl-considering-more-unique-destinations-after-australia/c-345683814",
+//       urlToImage:
+//         "https://cms.nhl.bamgrid.com/images/photos/343354742/1024x576/cut.jpg",
+//       publishedAt: "2023-09-01T04:00:00Z",
+//       content:
+//         "STOCKHOLM -- As the NHL continues its final preparations to bring teams to the Southern Hemisphere for the first time in September, it is already considering other unique international cities that co… [+2807 chars]",
+//     },
+//     // {
+//     //     "source": {
+//     //         "id": "the-hindu",
+//     //         "name": "The Hindu"
+//     //     },
+//     //     "author": "The Hindu",
+//     //     "title": "In search of gold: On Tokyo Olympics",
+//     //     "description": "The Olympic Games remain the greatest sporting event for fans and athletes alike",
+//     //     "url": "https://www.thehindu.com/opinion/editorial/in-search-of-gold-the-hindu-editorial-on-tokyo-olympics-2021/article35478354.ece",
+//     //     "urlToImage": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fychef.files.bbci.co.uk%2F976x549%2Fp09q8f3p.jpg&tbnid=XH2BVMxwQlJSCM&vet=12ahUKEwi7jJPzoM6BAxVTPkQIHXWbAhYQMygAegQIARBO..i&imgrefurl=https%3A%2F%2Fwww.bbc.com%2Ffuture%2Farticle%2F20181120-the-surprising-source-of-the-tokyo-2020-olympic-medals&docid=R7w0hhTOVoUwcM&w=976&h=549&q=In%20search%20of%20gold%3A%20On%20Tokyo%20Olympics&ved=2ahUKEwi7jJPzoM6BAxVTPkQIHXWbAhYQMygAegQIARBO",
+//     //     "publishedAt": "2021-07-22T18:32:00Z",
+//     //     "content": "A medal can lose its lustre but the athletes sporting immortality is set in stone, such is the enduring allure of triumphs at the Olympics. Even a participant without any titles, is referred to as an… [+2521 chars]"
+//     // },
+//     {
+//       source: {
+//         id: "espn-cric-info",
+//         name: "ESPN Cric Info",
+//       },
+//       author: null,
+//       title:
+//         "Five CSK games only hardcore fans will remember | ESPNcricinfo.com",
+//       description:
+//         "From throwing a surprise in the batting order to smashing sixes after sixes, CSK have done it all | ESPNcricinfo.com",
+//       url: "http://www.espncricinfo.com/story/_/id/28974528/five-csk-games-only-hardcore-fans-remember",
+//       urlToImage:
+//         "https://a2.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219712_1296x729.jpg",
+//       publishedAt: "2020-03-31T10:23:03Z",
+//       content:
+//         "If you're a Chennai Super Kings supporter, you'll remember MS Dhoni's sensational 29-ball 54 not out against Kings XI Punjab in Dharamsala in 2010 and that rare, pumped-up celebration where he jabbed… [+4410 chars]",
+//     },
+//     // {
+//     //     "source": {
+//     //         "id": "the-sport-bible",
+//     //         "name": "The Sport Bible"
+//     //     },
+//     //     "author": "Ryan Sidle",
+//     //     "title": "Bury FC Have Been Expelled From The EFL",
+//     //     "description": "The League One side have had all of their games suspended up to now but have no failed to meet a second deadline to sell the club.",
+//     //     "url": "http://www.thesportbible.com/football/news-bury-fc-have-been-expelled-from-the-efl-20190827",
+//     //     "urlToImage": "http://beta.ems.ladbiblegroup.com/s3/content/808x455/0bb079b75d654f14eec508e0ffc957eb.png",
+//     //     "publishedAt": "2019-08-27T22:16:21Z",
+//     //     "content": "League One club Bury FC have been hit with the devastating news that their EFL membership has been withdrawn after owner Steve Dale failed to find a buyer for the club buy the 5pm deadline on Tuesday… [+2924 chars]"
+//     // }
+//   ];
+
+//   // handleCountryChange = (newCountry) => {
+//   //   this.setState({ selectedCountry: newCountry }, () => {
+//   //     this.fetchNews(); // After changing the country, fetch news for the new country
+//   //   });
+//   // };
+
+//   constructor(props) {
+//     super(props);
+//     console.log("Hello im constrctor belongs to news component");
+//     // we use state when we want to change change a variable always exam mode =Light or dark
+//     // props we iuse when we wont change a varible frequently example {props.title} title we wont change always
+//     this.state = {
+//       articles: this.articles,
+//       loading: true, // ill make loading = true when i want to show spinner
+//       page: 1,
+//       mode: "light",
+//       btn: "Enable Darkmode",
+//       selectedCountry: "us",
+//       totalResults:0
+//     };
+//     document.title = `${this.capitalizeFirstLetter(
+//       this.props.category
+//     )}-Daily-NewsDose`;
+//   }
+
+//   capitalizeFirstLetter = (str) => {
+//     return str.charAt(0).toUpperCase() + str.slice(1);
+//   };
+
+//   async updateNews() {
+//     this.props.setProgress(0);
+//     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`;
+//     // bringing data from url
+//     this.props.setProgress(15);
+//     this.setState({ loading: true });
+//     // making loading true
+//     this.props.setProgress(30);
+//     let data = await fetch(url); //fetch(api)
+//     // waiting for data from url
+//     //Using await pauses the execution of its surrounding async function until the promise is settled (that is, fulfilled or rejected).
+//     // When execution resumes, the value of the await expression becomes that of the fulfilled promise.
+
+//     let parsedData = await data.json();
+//     //converting data into json
+//     this.props.setProgress(70);
+//     console.log(parsedData);
+//     //then setting the state again
+//     this.setState({
+//       articles: parsedData.articles,
+//       totalResults: parsedData.totalResults,
+//       loading: false,
+//     });
+//     //  this.fetchNews();
+//     this.props.setProgress(100);
+//   }
+
+//   // fetchNews = () => {
+//   //   //  const apiKey = '815de2a291534be6ae86d0b7050cf21e' // Replace with your News API key
+//   //   const { selectedCountry } = this.state;
+
+//   //   // Make an API request to fetch news for the selected country
+//   //   // You can use the selectedCountry variable in your API request
+//   //   const url = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=815de2a291534be6ae86d0b7050cf21e`;
+
+//   //   fetch(url)
+//   //     .then((response) => response.json())
+//   //     .then((data) => {
+//   //       this.setState({ articles: data.articles });
+//   //     })
+//   //     .catch((error) => {
+//   //       console.error("Error fetching news:", error);
+//   //     });
+//   //   // this.updateNews();
+//   // };
+
+//   async componentDidMount() {
+//     // componentDidMount() is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+//     //this component runs after render
+//     console.log("cdm");
+//     // this.fetchNews();
+
+//     // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&&apiKey=815de2a291534be6ae86d0b7050cf21e&page=1&pageSize=${this.props.pageSize}`;
+//     // // // bringing data from url
+//     //  this.setState({ loading: true });
+//     // // // making loading true
+//     // let data = await fetch(url); //fetch(api)
+//     // // // waiting for data from url
+//     // // //Using await pauses the execution of its surrounding async function until the promise is settled (that is, fulfilled or rejected).
+//     // // // When execution resumes, the value of the await expression becomes that of the fulfilled promise.
+
+//     // let parsedData = await data.json();
+//     // // //converting data into json
+//     // // console.log(parsedData);
+//     // // //then setting the state again
+//     // this.setState({
+//     // articles: parsedData.articles,
+//     // totalResults: parsedData.totalResults,
+//     //    loading: false,
+//     // });
+//     this.updateNews();
+//     // this.fetchNews();
+//   }
+//   // handlepreviousbutton = async () => {
+//   //   console.log("previous"); //need to change state
+//   //   // this.fetchNews();
+//   //   // let url = `https://newsapi.org/v2/top-headlines?country=${
+//   //   //   this.props.country
+//   //   // }&category=${
+//   //   //   this.props.category
+//   //   // }&&apiKey=815de2a291534be6ae86d0b7050cf21e&page=${
+//   //   //   this.state.page - 1
+//   //   // }&pageSize=${this.props.pageSize}`;
+//   //   // this.setState({ loading: true });
+//   //   // let data = await fetch(url); //fetch(api)
+//   //   // //Using await pauses the execution of its surrounding async function until the promise is settled (that is, fulfilled or rejected).
+//   //   // // When execution resumes, the value of the await expression becomes that of the fulfilled promise.
+
+//   //   // let parsedData = await data.json();
+//   //   // console.log(parsedData);
+//   //   // this.setState({
+//   //   //   page: this.state.page - 1,
+//   //   //   articles: parsedData.articles,
+//   //   //   loading: false,
+//   //   // });
+//   //   this.setState({ page: this.state.page - 1 });
+//   //   this.updateNews();
+//   // };
+//   // handlenextbutton = async () => {
+//   //   console.log("next");
+//   //   // this.fetchNews();
+
+//   //   // if (
+//   //   //   !this.state.page + 1 >
+//   //   //   Math.ceil(this.state.totalResults / this.props.pageSize)
+//   //   // ) {
+//   //   // } else {
+//   //   //   let url = `https://newsapi.org/v2/top-headlines?country=${
+//   //   //     this.props.country
+//   //   //   }&category=${
+//   //   //     this.props.category
+//   //   //   }&&apiKey=815de2a291534be6ae86d0b7050cf21e&page=${
+//   //   //     this.state.page + 1
+//   //   //   }&pageSize=${this.props.pageSize}`;
+//   //   //   this.setState({ loading: true });
+//   //   //   let data = await fetch(url); //fetch(api)
+//   //   //   //Using await pauses the execution of its surrounding async function until the promise is settled (that is, fulfilled or rejected).
+//   //   //   // When execution resumes, the value of the await expression becomes that of the fulfilled promise.
+
+//   //   //   let parsedData = await data.json();
+//   //   //   console.log(parsedData);
+//   //   //   this.setState({
+//   //   //     page: this.state.page + 1,
+//   //   //     articles: parsedData.articles,
+//   //   //     loading: false,
+//   //   //   });
+//   //   // }
+//   //   this.setState({ page: this.state.page + 1 });
+//   //   this.updateNews();
+//   // };
+     
+
+//   fetchMoreData =async () => {
+//    this.setState({page:this.state.page+1});
+//    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`;
+//     // bringing data from url
+//     // this.setState({ loading: true });
+//     // making loading true
+//     let data = await fetch(url); //fetch(api)
+//     // waiting for data from url
+//     //Using await pauses the execution of its surrounding async function until the promise is settled (that is, fulfilled or rejected).
+//     // When execution resumes, the value of the await expression becomes that of the fulfilled promise.
+
+//     let parsedData = await data.json();
+//     //converting data into json
+//     console.log(parsedData);
+//     //then setting the state again
+//     this.setState({
+//       articles: this.state.articles.concat( parsedData.articles),
+//       totalResults: parsedData.totalResults,
+//       // loading: false,
+//     });
+//   };
+//   render() {
+//     console.log("Iam Render")
+//     const { mode, btn } = this.state; // Destructure articles from state
+//     const category = this.props.category;
+//     const categoryBadgeColors = {
+//       sports: "bg-warning",
+//       technology: "bg-dark",
+//       entertainment: "bg-success",
+//       science: "bg-info",
+//       health: "bg-danger",
+//       general: "bg-primary",
+//       business: "bg-primary",
+//       // Add more categories and colors as needed
+//     };
+//     const badgeColor = categoryBadgeColors[category] || "bg-primary";
+
+//     return (
+//       <div className="container my-3 ">
+//         <h1 className="text-center">
+//           DailyNewsDose {this.capitalizeFirstLetter(this.props.category)}
+//           TopHeadlines{" "}
+//         </h1>
+//         <InfiniteScroll
+        
+//           dataLength={this.state.articles.length}
+//           next={this.fetchMoreData}
+//           hasMore={this.state.articles.length!==this.state.totalResults}
+//           loader={<Spinner/>}
+//         >
+//         {this.state.loading && <Spinner />}
+//         {/* show the spinner if this.state.loading is true then no need  */}
+//         <div className="container">
+//         <div className="row">
+//           {/* <CountryDropdown
+//             selectedCountry={this.state.selectedCountry}
+//             onChangeCountry={this.handleCountryChange}
+//           /> */}
+//           {/* {!this.state.loading && this.state.articles.map((element) => ( */}
+//           {
+            
+//              this.state.articles.map((element, index) => (
+//                 // {const a = true;
+//                 // const b = false;
+
+//                 // const result1 = a && b; // result1 will be false
+//                 // const result2 = a && true; // result2 will be true
+//                 // const result3 = b && false; // result3 will be false
+//                 // }
+
+//                 // if this.state.loading is true (&&)then anything should not visible
+//                 // if ! this.state.loading is false then visisble
+//                 <div className="col-md-4" key={element.url + index}>
+//                   <NewsItem
+//                     mode={mode}
+//                     btn={btn}
+//                     title={element.title ? element.title.slice(0, 40) : " "}
+//                     description={
+//                       element.description
+//                         ? element.description.slice(0, 70)
+//                         : " "
+//                     }
+//                     imageUrl={element.urlToImage}
+//                     url={element.url}
+//                     author={element.author}
+//                     date={element.publishedAt}
+//                     source={element.source.name}
+//                     badgeColor={badgeColor}
+//                   />
+//                 </div>
+//               ))}
+//         </div>
+//         </div>
+//       </InfiniteScroll>
+//       {/* <ScrollButtons/> */}
+//         {/* <div className="d-flex justify-content-between">
+//           <button
+//             type="button"
+//             disabled={this.state.page <= 1}
+//             onClick={this.handlepreviousbutton}
+//             className="btn btn-dark"
+//           >
+//             Previous &larr;
+//           </button>
+//           <button
+//             type="button"
+//             disabled={
+//               this.state.page + 1 >
+//               Math.ceil(this.state.totalResults / this.props.pageSize)
+//             }
+//             onClick={this.handlenextbutton}
+//             className="btn btn-dark"
+//           >
+//             Next &rarr;
+//           </button>
+//         </div> */}
+//       </div>
+//     );
+//   }
+// }
